@@ -1,0 +1,19 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    mysql:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/multithread
+      userName: root
+      password: 19961213lc@@
+
+
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  typeAliasesPackage: com.mianshi.multithrad.entity

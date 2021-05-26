@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mianshi.multithread.mapper.ResultMapper">
+
+    <resultMap id="Asset" type="com.mianshi.multithread.entity.AssetEntity">
+        <id column="id" property="id"/>
+        <result column="ip" property="ip"/>
+        <result column="username" property="username"/>
+    </resultMap>
+
+    <resultMap id="IMC" type="com.mianshi.multithread.entity.IMCEntity">
+        <id column="id" property="id"/>
+        <result column="ip" property="ip"/>
+        <result column="access_time" property="accessTime"/>
+    </resultMap>
+
+
+    <resultMap id="Result" type="com.mianshi.multithread.entity.ResultEntity">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="ip" property="ip"/>
+        <result column="access_time" property="accessTime"/>
+    </resultMap>
+
+
+    <select id="selectAccessList" resultMap="Asset">
+        select ip, username
+        from asset
+        where ip = #{ip}
+    </select>
+
+    <select id="selectIMCList" resultMap="IMC">
+        select ip, access_time
+        from imc
+        where ip = #{ip}
+    </select>
+
+
+    <insert id="mergeResult" parameterType="com.mianshi.multithread.entity.ResultEntity">
+        insert into result(ip, username, access_time)
+        values(#{ip},#{username},#{accessTime})
+    </insert>
+
+
+</mapper>
